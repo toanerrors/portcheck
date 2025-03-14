@@ -45,43 +45,36 @@ jobs:
       - name: Create Man Page
         shell: bash
         run: |
-          if [ -f docs/portcheck.1 ]; then
-            mkdir -p build
-            gzip -c docs/portcheck.1 > build/portcheck.1.gz
-          else
-            echo "No man page found, creating basic man page..."
-            mkdir -p docs
-            cat > docs/portcheck.1 << EOF
-              .TH PORTCHECK 1 "$(date +"%B %Y")" "portcheck $(grep VERSION config/version.conf | cut -d '"' -f 2)" "User Commands"
-              .SH NAME
-              portcheck \- kiểm tra và quản lý tiến trình đang sử dụng các cổng mạng
-              .SH SYNOPSIS
-              .B portcheck
-              [\fIOPTIONS\fR] \fIPORT1\fR [\fIPORT2 PORT3 ...\fR]
-              .SH DESCRIPTION
-              Công cụ kiểm tra và quản lý tiến trình đang sử dụng các cổng mạng.
-              .SH OPTIONS
-              .TP
-              .BR \-h ", " \-\-help
-              Hiển thị trợ giúp
-              .TP
-              .BR \-f ", " \-\-force
-              Kill các tiến trình mà không hỏi
-              .TP
-              .BR \-g ", " \-\-graceful
-              Thử SIGTERM trước, sau đó SIGKILL
-              .TP
-              .BR \-l ", " \-\-list
-              Chỉ liệt kê tiến trình
-              .TP
-              .BR \-v ", " \-\-version
-              Hiển thị phiên bản và thông tin
-              .SH AUTHOR
-              $(grep AUTHOR config/version.conf | cut -d '"' -f 2) <$(grep EMAIL config/version.conf | cut -d '"' -f 2)>
-            EOF
-            mkdir -p build
-            gzip -c docs/portcheck.1 > build/portcheck.1.gz
-          fi
+          mkdir -p docs build
+          cat > docs/portcheck.1 << EOF
+            .TH PORTCHECK 1 "$(date +"%B %Y")" "portcheck $(grep VERSION config/version.conf | cut -d '"' -f 2)" "User Commands"
+            .SH NAME
+            portcheck \- kiểm tra và quản lý tiến trình đang sử dụng các cổng mạng
+            .SH SYNOPSIS
+            .B portcheck
+            [\fIOPTIONS\fR] \fIPORT1\fR [\fIPORT2 PORT3 ...\fR]
+            .SH DESCRIPTION
+            Công cụ kiểm tra và quản lý tiến trình đang sử dụng các cổng mạng.
+            .SH OPTIONS
+            .TP
+            .BR \-h ", " \-\-help
+            Hiển thị trợ giúp
+            .TP
+            .BR \-f ", " \-\-force
+            Kill các tiến trình mà không hỏi
+            .TP
+            .BR \-g ", " \-\-graceful
+            Thử SIGTERM trước, sau đó SIGKILL
+            .TP
+            .BR \-l ", " \-\-list
+            Chỉ liệt kê tiến trình
+            .TP
+            .BR \-v ", " \-\-version
+            Hiển thị phiên bản và thông tin
+            .SH AUTHOR
+            $(grep AUTHOR config/version.conf | cut -d '"' -f 2) <$(grep EMAIL config/version.conf | cut -d '"' -f 2)>
+          EOF
+          gzip -c docs/portcheck.1 > build/portcheck.1.gz
 
       - name: Build Debian Package
         run: make package-deb
