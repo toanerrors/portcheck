@@ -1,0 +1,7 @@
+# Allow sourcing of files that may not exist
+disable=SC1091
+
+# Specify common source file locations
+source-path=SCRIPTDIR
+source-path=SCRIPTDIR/../config
+source-path=/etc/portcheck

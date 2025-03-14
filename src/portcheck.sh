@@ -18,10 +18,12 @@ VERSION="2.4"
 AUTHOR="errors"
 EMAIL="toanerror2000@gmail.com"
 
+# shellcheck source=/etc/portcheck/version.conf
 if [ -f "$VERSION_FILE" ]; then
-    source "$VERSION_FILE"
+    source "$VERSION_FILE" || echo "Could not load version configuration from $VERSION_FILE"
+# shellcheck source=../config/version.conf
 elif [ -f "$LOCAL_VERSION_FILE" ]; then
-    source "$LOCAL_VERSION_FILE"
+    source "$LOCAL_VERSION_FILE" || echo "Could not load version configuration from $LOCAL_VERSION_FILE"
 fi
 
 # Thiết lập màu sắc cho output
