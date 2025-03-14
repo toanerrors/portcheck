@@ -1,0 +1,62 @@
+.TH PORTCHECK 1 "March 2024" "portcheck 2.4" "User Commands"
+.SH NAME
+portcheck \- kiểm tra và quản lý tiến trình đang sử dụng các cổng mạng
+.SH SYNOPSIS
+.B portcheck
+[\fIOPTIONS\fR] \fIPORT1\fR [\fIPORT2 PORT3 ...\fR]
+.SH DESCRIPTION
+Công cụ kiểm tra và quản lý tiến trình đang sử dụng các cổng mạng. Công cụ này giúp người dùng dễ dàng xác định tiến trình nào đang chiếm một cổng mạng cụ thể và cho phép kill các tiến trình đó nếu cần.
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Hiển thị trợ giúp
+.TP
+.BR \-f ", " \-\-force
+Kill các tiến trình mà không hỏi
+.TP
+.BR \-g ", " \-\-graceful
+Thử SIGTERM trước, chờ 3 giây trước khi dùng SIGKILL
+.TP
+.BR \-l ", " \-\-list
+Chỉ liệt kê tiến trình mà không hỏi về việc kill
+.TP
+.BR \-v ", " \-\-version
+Hiển thị phiên bản và thông tin
+.SH EXAMPLES
+.PP
+Kiểm tra một cổng:
+.PP
+.B portcheck 8080
+.PP
+Kiểm tra nhiều cổng:
+.PP
+.B portcheck 8080 3000 5432
+.PP
+Chỉ liệt kê các tiến trình, không kill:
+.PP
+.B portcheck -l 8080
+.PP
+Kill các tiến trình mà không hỏi:
+.PP
+.B portcheck -f 8080
+.PP
+Kill "nhẹ nhàng" (SIGTERM trước, sau đó SIGKILL):
+.PP
+.B portcheck -g 8080
+.SH FILES
+.TP
+.I /usr/local/bin/portcheck
+Script chính của công cụ
+.TP
+.I /etc/portcheck/version.conf
+File cấu hình phiên bản
+.SH SEE ALSO
+.BR lsof (8),
+.BR kill (1)
+.SH BUGS
+Vui lòng báo cáo lỗi tại: <https://github.com/errors/portcheck/issues>
+.SH AUTHOR
+errors <toanerror2000@gmail.com>
+.SH COPYRIGHT
+Copyright \(co 2022-2024 errors.
+Phát hành dưới giấy phép MIT.

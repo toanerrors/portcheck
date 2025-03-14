@@ -78,7 +78,7 @@ jobs:
             Hiển thị phiên bản và thông tin
             .SH AUTHOR
             $(grep AUTHOR config/version.conf | cut -d '"' -f 2) <$(grep EMAIL config/version.conf | cut -d '"' -f 2)>
-            .SH COPYRIGHT
+            EOF
             mkdir -p build
             gzip -c docs/portcheck.1 > build/portcheck.1.gz
           fi
