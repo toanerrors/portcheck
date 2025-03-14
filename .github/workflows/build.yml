@@ -51,7 +51,7 @@ jobs:
           else
             echo "No man page found, creating basic man page..."
             mkdir -p docs
-            cat > docs/portcheck.1 << 'MANEOF'
+            cat > docs/portcheck.1 << 'EOF'
             .TH PORTCHECK 1 "$(date +"%B %Y")" "portcheck $(grep VERSION config/version.conf | cut -d '"' -f 2)" "User Commands"
             .SH NAME
             portcheck \- kiểm tra và quản lý tiến trình đang sử dụng các cổng mạng
@@ -78,7 +78,7 @@ jobs:
             Hiển thị phiên bản và thông tin
             .SH AUTHOR
             $(grep AUTHOR config/version.conf | cut -d '"' -f 2) <$(grep EMAIL config/version.conf | cut -d '"' -f 2)>
-            MANEOF
+            .SH COPYRIGHT
             mkdir -p build
             gzip -c docs/portcheck.1 > build/portcheck.1.gz
           fi
