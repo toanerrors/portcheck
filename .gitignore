@@ -1,0 +1,33 @@
+# Compiled files
+*.o
+*.so
+*.class
+
+# Packaging files
+*.deb
+*.rpm
+*.tar.gz
+*.zip
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+
+# Test directories
+/tests/tmp/
+/tests/mock_environments/tmp/
+/tests/docker/.env
+
+# Build directories
+/build/
+/dist/
+
+# GitHub Actions
+/.github/.DS_Store
+
+# Xác nhận các tệp quan trọng không bị bỏ qua
+!.github/workflows/
+!.github/README.md
